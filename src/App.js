@@ -1,23 +1,36 @@
-import logo from './logo.svg';
+import React, {useState } from 'react';
 import './App.css';
 
+
+
 function App() {
+
+  const [image, setImage] = useState("https://randomfox.ca/images/116.jpg");
+  const [likes, setLikes] = useState(0);
+
+  function NewFork() {
+    fetch("https://randomfox.ca/floof/")
+      .then((response) => response.json())
+      .then(({ image }) => {
+        setImage(image);
+      });
+  }
+  function NewImage() {
+  setImage(NewFork)
+  }
+  function IncreaseLikes() {
+    setLikes(likes+1);
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Random Cute Fox</h1>
+      <div className="buttons">
+        <button onClick={IncreaseLikes}>Likes:{ likes }</button>
+        <button onClick={NewImage}>New Fox</button>
+      </div>
+      <img src={image} alt=""></img>
     </div>
   );
 }
