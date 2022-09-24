@@ -15,6 +15,8 @@ function App() {
         setImage(image);
       });
   }
+
+
   function NewImage() {
   setImage(NewFork)
   }
@@ -27,12 +29,21 @@ function App() {
     <div>
       <h1>Random Cute Fox</h1>
       <div className="buttons">
-        <button onClick={IncreaseLikes}>Likes:{ likes }</button>
+        <button onClick={IncreaseLikes}>Likes:{likes}</button>
         <button onClick={NewImage}>New Fox</button>
       </div>
       <img src={image} alt=""></img>
+      <Comments CommentsAdded="Liza: Wow, really cute foxes" />
+      <Comments CommentsAdded="Liza: How do we sign up to your website though?" />
+      <Comments CommentsAdded="Meme: Y'all should visit this place" />
+      <Comments CommentsAdded="Chris: Awesome" />
+      <Comments CommentsAdded="Kyle: some nice wallpapers you should download, haha" />
+      <Comments />
     </div>
   );
+}
+function Comments(props) {
+  return (<div>{props.CommentsAdded}</div>)
 }
 
 export default App;
